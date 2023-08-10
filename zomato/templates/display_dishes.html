@@ -1,0 +1,21 @@
+<!-- zomato_app/templates/zomato_app/display_dishes.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zomato Chronicles - Display Dishes</title>
+</head>
+<body>
+<a href="{% url 'add_dish' %}">Add Dish</a>
+<a href="{% url 'delete_dish' %}">Delete Dish</a>
+<a href="{% url 'display_dishes' %}">Display</a>
+<a href="{% url 'update_dishes' %}">Update</a>
+<a href="{% url 'take_order' %}">Take Order</a>
+<h1>Menu</h1>
+<ul>
+    {% for dish in dishes %}
+    <li>{{ dish.name }} - Price: {{ dish.price }} - Availability: {% if dish.availability %}Available{% else %}Not Available{% endif %}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

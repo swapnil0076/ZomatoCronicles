@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Orders</title>
+</head>
+<body>
+<a href="{% url 'add_dish' %}">Add Dish</a>
+<a href="{% url 'delete_dish' %}">Delete Dish</a>
+<a href="{% url 'display_dishes' %}">Display</a>
+<a href="{% url 'update_dishes' %}">Update</a>
+<a href="{% url 'take_order' %}">Take Order</a>
+<a href="{% url 'display_orders' %}">Take Order</a>
+<h1>Orders</h1>
+<ul>
+    {% for order in orders %}
+    <li>
+        Order ID: {{ order.order_id }}<br>
+        Customer Name: {{ order.customer_name }}<br>
+        Dishes:
+        <ul>
+            {% for dish in order.dishes %}
+            <li>{{ dish.name }} - Price: {{ dish.price }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    <br>
+    {% endfor %}
+</ul>
+</body>
+</html>
