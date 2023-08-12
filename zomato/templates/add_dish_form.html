@@ -1,24 +1,70 @@
+<!--<!DOCTYPE html>-->
+<!--{% load static %}-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<a href="{% url 'add_dish' %}">Add Dish</a>-->
+<!--<a href="{% url 'delete_dish' %}">Delete Dish</a>-->
+<!--<a href="{% url 'display_dishes' %}">Display</a>-->
+<!--<a href="{% url 'update_dishes' %}">Update</a>-->
+<!--<a href="{% url 'take_order' %}">Take Order</a>-->
+<!--<a href="{% url 'display_orders' %}">Take Order</a>-->
+
+<!--<h1>Add Dish to Menu</h1>-->
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">Add Dish</button>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Zomato Chronicles</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+<nav class="navbar">
+    <a href="{% url 'add_dish' %}">Add Dish</a>
+    <a href="{% url 'delete_dish' %}">Delete Dish</a>
+    <a href="{% url 'display_dishes' %}">Display</a>
+    <a href="{% url 'update_dishes' %}">Update</a>
+    <a href="{% url 'take_order' %}">Take Order</a>
+    <a href="{% url 'display_orders' %}">Orders</a>
+</nav>
 
-<a href="{% url 'add_dish' %}">Add Dish</a>
-<a href="{% url 'delete_dish' %}">Delete Dish</a>
-<a href="{% url 'display_dishes' %}">Display</a>
-<a href="{% url 'update_dishes' %}">Update</a>
-<a href="{% url 'take_order' %}">Take Order</a>
-<a href="{% url 'display_orders' %}">Take Order</a>
+<div class="content">
+    <h1>Add Dish to Menu</h1>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="{{ form.dish_id.id_for_label }}">Dish Id:</label>
+            {{form.dish_id}}
 
-<h1>Add Dish to Menu</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Dish</button>
-</form>
+            <label for="{{ form.name.id_for_label }}">Dish Name:</label>
+            {{ form.name }}
 
+            <label for="{{ form.price.id_for_label }}">Price:</label>
+            {{ form.price }}
+
+            <label for="{{ form.description.id_for_label }}">Description:</label>
+            {{ form.description }}
+
+            <label for="{{ form.availability.id_for_label }}">Availability:</label>
+            {{ form.availability }}
+
+            <button type="submit">Add Dish</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

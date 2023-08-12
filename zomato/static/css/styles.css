@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+body {
+    font-family: 'Comfortaa', Arial, sans-serif; /* Use Comfortaa font */
+    margin: 0;
+    padding: 0;
+    background-image: url("top-view-food-frame-with-copy-space.jpg");
+    background-size: cover;
+    background-position: center;
+     background-repeat: no-repeat;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input[type="text"],
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Import the Comfortaa font from Google Fonts */
+
+
+.navbar {
+    background-color: transparent;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s, background-color 0.3s; /* Add transition for color and background-color */
+    display: inline-block;
+    padding: 10px 20px; /* Add padding for the box area */
+}
+
+.navbar a:hover {
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.2); /* Add a background color on hover */
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    width: 70%; /* Adjust the width of the container */
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; /* Make label text bold */
+}
+
+.form-container input[type="text"],
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ... (other styles) */
+
+.form-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    width: 65%;
+    margin: 0 auto;
+    background-color: rgba(248, 248, 248, 0.7); /* Initial transparency */
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Add transition for smooth color change */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: black; /* Form label color */
+}
+
+.form-container input[type="text"],
+.form-container select {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent; /* Initial input background color */
+    color: white; /* Input font color */
+    transition: background-color 0.3s; /* Add transition for smooth color change */
+}
+
+
+
+
+.form-container input[type="text"]:focus,
+.form-container select:focus {
+    background-color: #fff; /* Change input background color on focus */
+    color: #000; /* Change input font color on focus */
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ... (other styles) */
+
+

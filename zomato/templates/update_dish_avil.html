@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Dish</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
 </head>
 <body>
+<nav class="navbar">
+    <a href="{% url 'add_dish' %}">Add Dish</a>
+    <a href="{% url 'delete_dish' %}">Delete Dish</a>
+    <a href="{% url 'display_dishes' %}">Display</a>
+    <a href="{% url 'update_dishes' %}">Update</a>
+    <a href="{% url 'take_order' %}">Take Order</a>
+    <a href="{% url 'display_orders' %}">Orders</a>
+</nav>
+    <h1>Update Dish</h1>
+    <div class="update-container">
 
-<a href="{% url 'add_dish' %}">Add Dish</a>
-<a href="{% url 'delete_dish' %}">Delete Dish</a>
-<a href="{% url 'display_dishes' %}">Display</a>
-<a href="{% url 'update_dishes' %}">Update</a>
-<a href="{% url 'take_order' %}">Take Order</a>
-<a href="{% url 'display_orders' %}">Take Order</a>
 
-<h1>Update Dish</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="update-field">
+                <label for="key_to_update">Select Dish to Update:</label>
+                <select name="key_to_update" id="key_to_update">
+                    {% for key in keys %}
+                    <option value="{{ key }}">{{ key }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-<form method="post">
-    {% csrf_token %}
-    <label for="key_to_update">Select Dish to Update:</label>
-    <select name="key_to_update" id="key_to_update">
-        {% for key in keys %}
-        <option value="{{ key }}">{{ key }}</option>
-        {% endfor %}
-    </select>
+            <div class="update-field">
+                <label for="attribute">Select Attribute to Update:</label>
+                <select name="attribute" id="attribute">
+                    <option value="name">Name</option>
+                    <option value="availability">Availability</option>
+                    <option value="price">Price</option>
+                </select>
+            </div>
 
-    <label for="attribute">Select Attribute to Update:</label>
-    <select name="attribute" id="attribute">
-        <option value="name">Name</option>
-        <option value="availability">Availability</option>
-        <option value="price">Price</option>
-    </select>
+            <div class="update-field">
+                <label>New Value:</label>
+                <input type="text" name="new_value">
+            </div>
 
-    <label >New Value:</label>
-    <input type="text" name="new_value">
+            <button type="submit">Update</button>
+        </form>
 
-    <button type="submit">Update</button>
-</form>
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
 
-{% if error_message %}
-<p style="color: red;">{{ error_message }}</p>
-{% endif %}
 
-<p><a href="{% url 'display_dishes' %}">Back to Display Dishes</a></p>
+    </div>
 </body>
-<script>
-
-    let a = document.getElement
-
-</script>
 </html>
+

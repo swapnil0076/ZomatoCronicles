@@ -1,26 +1,33 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Delete Dish</title>
+    <link rel="stylesheet" href="{% static 'css/delete.css' %}">
 </head>
 <body>
-<a href="{% url 'add_dish' %}">Add Dish</a>
-<a href="{% url 'delete_dish' %}">Delete Dish</a>
-<a href="{% url 'display_dishes' %}">Display</a>
-<a href="{% url 'update_dishes' %}">Update</a>
-<a href="{% url 'take_order' %}">Take Order</a>
-<a href="{% url 'display_orders' %}">Take Order</a>
-<h1>Delete Dish</h1>
-<form method="post">
-    {% csrf_token %}
-    <label for="dish_id">Select Dish ID:</label>
-    <select id="dish_id" name="dish_id">
-        {% for dish_id in dish_ids %}
-        <option value="{{ dish_id }}">{{ dish_id }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    <input type="submit" value="Delete">
-</form>
+<nav class="navbar">
+    <a href="{% url 'add_dish' %}">Add Dish</a>
+    <a href="{% url 'delete_dish' %}">Delete Dish</a>
+    <a href="{% url 'display_dishes' %}">Display</a>
+    <a href="{% url 'update_dishes' %}">Update</a>
+    <a href="{% url 'take_order' %}">Take Order</a>
+    <a href="{% url 'display_orders' %}">Orders</a>
+</nav>
+<div class="delete-container">
+    <div class="delete-form">
+        <h1>Delete Dish</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="dish_id">Select Dish ID:</label>
+            <select id="dish_id" name="dish_id">
+                {% for dish_id in dish_ids %}
+                <option value="{{ dish_id }}">{{ dish_id }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</div>
 </body>
 </html>

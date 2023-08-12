@@ -1,55 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Zomato Chronicles - Take Order</title>
-    <style>
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .menu-item {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/take_order.css' %}">
 </head>
 <body>
-<a href="{% url 'add_dish' %}">Add Dish</a>
-<a href="{% url 'delete_dish' %}">Delete Dish</a>
-<a href="{% url 'display_dishes' %}">Display</a>
-<a href="{% url 'update_dishes' %}">Update</a>
-<a href="{% url 'take_order' %}">Take Order</a>
-<a href="{% url 'display_orders' %}">Take Order</a>
-<h1>Take Order</h1>
-{% if message %}
-<p>{{ message }}</p>
-{% endif %}
-<form method="post">
-    {% csrf_token %}
-    <div>
-        <label>Select Items:</label>
-        <ul class="menu-grid">
-            {% for item in menu_items %}
-            <li class="menu-item">
-                <input type="checkbox" name="items" value="{{ item.dish_id }}" id="item_{{ item.dish_id }}">
-                <label for="item_{{ item.dish_id }}">{{ item.name }}</label>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <label>Enter Quantities (comma-separated):</label>
-        <input type="text" name="quantities" required>
-    </div>
-    <div>
-        <label>Customer Name:</label>
-        <input type="text" name="customer_name" required>
-    </div>
-    <br>
-    <input type="submit" value="Place Order">
-</form>
+<nav class="navbar">
+    <a href="{% url 'add_dish' %}">Add Dish</a>
+    <a href="{% url 'delete_dish' %}">Delete Dish</a>
+    <a href="{% url 'display_dishes' %}">Display</a>
+    <a href="{% url 'update_dishes' %}">Update</a>
+    <a href="{% url 'take_order' %}">Take Order</a>
+    <a href="{% url 'display_orders' %}">Orders</a>
+</nav>
+<div class="take-order-container">
+    <h1>Take Order</h1>
+    {% if message %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="menu-items">
+            <label>Select Items:</label>
+            <ul class="menu-grid">
+                {% for item in menu_items %}
+                <li class="menu-item">
+                    <input type="checkbox" name="items" value="{{ item.dish_id }}" id="item_{{ item.dish_id }}">
+                    <label for="item_{{ item.dish_id }}">{{ item.name }}</label>
+                    <div class="quantity">
+                        <button type="button" class="quantity-btn minus">-</button>
+                        <input type="text" class="quantity-input" name="quantity_{{ item.dish_id }}" value="0" readonly>
+                        <button type="button" class="quantity-btn plus">+</button>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="order-details">
+            <div id="quan">
+            <label>Enter Quantities (comma-separated):</label>
+            <input type="text" name="quantities" id="quantities-input" required>
+            </div>
+            <label>Customer Name:</label>
+            <input type="text" name="customer_name" required>
+            <input type="submit" value="Place Order">
+        </div>
+    </form>
+</div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+       const plusButtons = document.querySelectorAll(".quantity-btn.plus");
+       const minusButtons = document.querySelectorAll(".quantity-btn.minus");
+       const quantitiesInput = document.getElementById("quantities-input");
+
+       plusButtons.forEach(function (button) {
+           button.addEventListener("click", function () {
+               const input = button.parentElement.querySelector(".quantity-input");
+               input.value = parseInt(input.value) + 1;
+               updateQuantitiesInput();
+           });
+       });
+
+       minusButtons.forEach(function (button) {
+           button.addEventListener("click", function () {
+               const input = button.parentElement.querySelector(".quantity-input");
+               const value = parseInt(input.value);
+               if (value > 0) {
+                   input.value = value - 1;
+                   updateQuantitiesInput();
+               }
+           });
+       });
+
+       function updateQuantitiesInput() {
+           const quantities = [];
+           const quantityInputs = document.querySelectorAll(".quantity-input");
+           quantityInputs.forEach(function (input) {
+               if (input.value > 0) {
+                   quantities.push(input.value);
+               }
+           });
+           quantitiesInput.value = quantities.join(",");
+       }
+   });
+
+</script>
 </html>

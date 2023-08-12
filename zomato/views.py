@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from .forms import AddDishForm
-from .forms import TakeOrderForm
 
 
 class Dish:
-    def __init__(self, dish_id, name, price, availability="no"):
+    def __init__(self, dish_id, name, price,description,availability="no"):
         self.dish_id = dish_id
         self.name = name
         self.price = price
+        self.description = description
         self.availability = availability
+
 
 
 class Zomato:
@@ -27,9 +28,10 @@ def add_dish_view(request):
             name = form.cleaned_data['name']
             price = form.cleaned_data['price']
             availability = form.cleaned_data['availability']
+            description = form.cleaned_data['description']
 
             # Create an instance of the Dish class
-            dish = Dish(dish_id, name, price, availability)
+            dish = Dish(dish_id, name, price, description, availability)
 
             # Store the dish in the zomato's menu dictionary
             zom.menu[dish_id] = dish
@@ -115,6 +117,7 @@ def take_order_view(request):
             order = {
                 'order_id': len(order_list) + 1,
                 'customer_name': customer_name,
+                'order_status':'preparing',
                 'dishes': [],
             }
             for item, quantity in zip(selected_items, quantities):
@@ -136,4 +139,15 @@ def take_order_view(request):
 
 
 def display_orders(request):
+
+    order_id = request.POST.get('order_id')
+    new_status = request.POST.get('new_status')
+
+    for order in order_list:
+        if order['order_id'] == order_id:
+            order['order_status'] = new_status
+            break
+
+    print(order_list)
     return render(request, 'display_orders.html', {'orders': order_list})
+

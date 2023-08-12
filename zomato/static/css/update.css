@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+body {
+    font-family: 'Comfortaa', Arial, sans-serif; /* Use Comfortaa font */
+    margin: 0;
+    padding: 0;
+    background-image: url("top-view-food-frame-with-copy-space.jpg");
+    background-size: cover;
+    background-position: center;
+     background-repeat: no-repeat;
+}
+
+.navbar {
+    background-color: transparent;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s, background-color 0.3s; /* Add transition for color and background-color */
+    display: inline-block;
+    padding: 10px 20px; /* Add padding for the box area */
+}
+
+.navbar a:hover {
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.2); /* Add a background color on hover */
+}
+
+.update-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    weight:500px
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.update-form {
+    max-width: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+margin-top:10%
+    font-size: 24px;
+    font-weight: bold;
+    text-align:center;
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    font-weight: bold;
+    font-size:20px;
+    color:white;
+    margin: 10px 0;
+    text-align: left;
+}
+
+input[type="text"],
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 10px;
+}

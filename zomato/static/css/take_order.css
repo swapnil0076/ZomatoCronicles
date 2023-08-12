@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+body {
+    font-family: 'Comfortaa', Arial, sans-serif; /* Use Comfortaa font */
+    margin: 0;
+    padding: 0;
+    background-image: url("top-view-food-frame-with-copy-space.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.navbar {
+    background-color: transparent;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s, background-color 0.3s; /* Add transition for color and background-color */
+    display: inline-block;
+    padding: 10px 20px; /* Add padding for the box area */
+}
+
+.navbar a:hover {
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.2); /* Add a background color on hover */
+}
+
+.menu-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   gap: 20px;
+   }
+   .menu-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+   }
+
+
+.take-order-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.message {
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-items,
+.order-details {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+.order-details label[for="quantities-input"],
+.order-details input[name="quantities"] {
+    display: none;
+}
+
+#quan{
+display:none;
+}
+
+.label {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.menu-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.quantity {
+    display: flex;
+    margin-top: 5px;
+}
+
+.quantity-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+.plus:hover,
+.minus:hover {
+    background-color: #0056b3;
+}

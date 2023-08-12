@@ -1,21 +1,44 @@
-<!-- zomato_app/templates/zomato_app/display_dishes.html -->
-
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Zomato Chronicles - Display Dishes</title>
+    <link rel="stylesheet" href="{% static 'css/Display.css' %}">
 </head>
 <body>
-<a href="{% url 'add_dish' %}">Add Dish</a>
-<a href="{% url 'delete_dish' %}">Delete Dish</a>
-<a href="{% url 'display_dishes' %}">Display</a>
-<a href="{% url 'update_dishes' %}">Update</a>
-<a href="{% url 'take_order' %}">Take Order</a>
-<h1>Menu</h1>
-<ul>
-    {% for dish in dishes %}
-    <li>{{ dish.name }} - Price: {{ dish.price }} - Availability: {% if dish.availability %}Available{% else %}Not Available{% endif %}</li>
-    {% endfor %}
-</ul>
+<nav class="navbar">
+    <a href="{% url 'add_dish' %}">Add Dish</a>
+    <a href="{% url 'delete_dish' %}">Delete Dish</a>
+    <a href="{% url 'display_dishes' %}">Display</a>
+    <a href="{% url 'update_dishes' %}">Update</a>
+    <a href="{% url 'take_order' %}">Take Order</a>
+    <a href="{% url 'display_orders' %}">Orders</a>
+</nav>
+<!--<h1>Menu</h1>-->
+<!--<ul>-->
+<!--    {% for dish in dishes %}-->
+<!--    <li>{{ dish.name }} - Price: {{ dish.price }} - Description: {{dish.description}} - Availability: {% if dish.availability %}Available{% else %}Not Available{% endif %}</li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+<div class="menu-container">
+    <h1>Menu</h1>
+    <ul>
+        {% for dish in dishes %}
+        <li class="dish-item">
+            <div class="dish-image">
+                <!-- You can add an image here -->
+            </div>
+            <div class="dish-details">
+                <h2>{{ dish.name }}</h2>
+                <h3>Price:- {{ dish.price }}</h3>
+                <p>{{ dish.description }}</p>
+                <p class="availability {% if dish.availability %}available{% else %}not-available{% endif %}">
+                    {% if dish.availability %}Available{% else %}Not Available{% endif %}
+                </p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 </body>
 </html>

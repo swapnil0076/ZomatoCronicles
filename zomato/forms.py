@@ -5,6 +5,7 @@ class AddDishForm(forms.Form):
     name = forms.CharField(max_length=100)
     price = forms.DecimalField(max_digits=6, decimal_places=2)
     availability = forms.BooleanField(required=False)
+    description = forms.CharField(widget=forms.Textarea, max_length=500)
 
 
 class TakeOrderForm(forms.Form):
