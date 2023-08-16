@@ -51,6 +51,14 @@ th, td {
     text-align: left;
 }
 
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto
+    height:100vh;
+}
+
 /* Style for the form select and button */
 form select, form button {
     margin: 0;

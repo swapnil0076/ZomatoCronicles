@@ -73,15 +73,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'zomato_chronicles.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+#  Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'zomato',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',  # or your MySQL server host
+        'PORT': '3306',  # default MySQL port
+    }
+}
+
 
 
 # Password validation

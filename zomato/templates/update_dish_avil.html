@@ -15,45 +15,37 @@
     <a href="{% url 'update_dishes' %}">Update</a>
     <a href="{% url 'take_order' %}">Take Order</a>
     <a href="{% url 'display_orders' %}">Orders</a>
+
 </nav>
-    <h1>Update Dish</h1>
-    <div class="update-container">
+<h1>Update Dish</h1>
+<div class="update-container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="update-field">
+            <label for="key_to_update">Select Dish to Update:</label>
+            <select name="key_to_update" id="key_to_update">
+                {% for key in keys %}
+                <option value="{{ key }}">{{ key }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
+        <div class="update-field">
+            <label for="attribute">Select Attribute to Update:</label>
+            <select name="attribute" id="attribute">
+                <option value="name">Name</option>
+                <option value="availability">Availability</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
 
-        <form method="post">
-            {% csrf_token %}
-            <div class="update-field">
-                <label for="key_to_update">Select Dish to Update:</label>
-                <select name="key_to_update" id="key_to_update">
-                    {% for key in keys %}
-                    <option value="{{ key }}">{{ key }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+        <div class="update-field">
+            <label>New Value:</label>
+            <input type="text" name="new_value">
+        </div>
 
-            <div class="update-field">
-                <label for="attribute">Select Attribute to Update:</label>
-                <select name="attribute" id="attribute">
-                    <option value="name">Name</option>
-                    <option value="availability">Availability</option>
-                    <option value="price">Price</option>
-                </select>
-            </div>
-
-            <div class="update-field">
-                <label>New Value:</label>
-                <input type="text" name="new_value">
-            </div>
-
-            <button type="submit">Update</button>
-        </form>
-
-        {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
-        {% endif %}
-
-
-    </div>
+        <button type="submit">Update</button>
+    </form>
+</div>
 </body>
 </html>
-
